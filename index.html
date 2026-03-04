@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sangavi ❤️</title>
+
+<style>
+body{
+margin:0;
+height:100vh;
+background:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb') no-repeat center center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+font-family:Arial;
+text-align:center;
+color:white;
+}
+
+.container{
+background:rgba(0,0,0,0.6);
+padding:40px;
+border-radius:20px;
+}
+
+button{
+padding:15px 30px;
+margin:15px;
+border:none;
+border-radius:30px;
+font-size:20px;
+cursor:pointer;
+}
+
+#status{
+margin-top:20px;
+font-size:18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>Sangavi ❤️</h1>
+<h2>Are You Interested In...</h2>
+
+<button onclick="submitChoice('Marriage 💍')">Marriage 💍</button>
+<button onclick="submitChoice('Friends 🤝')">Friends 🤝</button>
+
+<p id="status"></p>
+</div>
+
+<!-- Firebase CDN -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<script>
+// ✅ YOUR FIREBASE CONFIG (Already Added)
+var firebaseConfig = {
+  apiKey: "AIzaSyAARmSPKZMJNxq35G96FApRHApIF9R689o",
+  authDomain: "code-40cb9.firebaseapp.com",
+  databaseURL: "https://code-40cb9-default-rtdb.firebaseio.com",
+  projectId: "code-40cb9",
+  storageBucket: "code-40cb9.firebasestorage.app",
+  messagingSenderId: "951828492385",
+  appId: "1:951828492385:web:925b07461cc576c3d5ba20",
+  measurementId: "G-J797CYSH51"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+// Get Database Reference
+var database = firebase.database();
+
+// Function when button clicked
+function submitChoice(choice){
+
+database.ref("responses").push({
+name: "Sangavi",
+decision: choice,
+time: new Date().toLocaleString()
+});
+
+document.getElementById("status").innerHTML =
+"Response Submitted Successfully ❤️";
+}
+</script>
+
+</body>
+</html>
